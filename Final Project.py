@@ -38,5 +38,12 @@ if answer == ("yes"):
             continue
         elif grade == ("good"):
             print('\n',"Good job!")
+            break
         else:
             print("Invalid input. Please say good, great, or poor.",'\n')
+            continue
+
+# This if statement is made to clear out extra indents, and makes sure you are on the good path of the story.
+
+if answer == ("yes") and grade == ("good"):
+    print("Test")
