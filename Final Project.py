@@ -35,7 +35,7 @@ else:
 while answer == ("yes"):
     print('\n',"Because you are in the Han dynasty, you need to remember to not back down from fighting. If you fail with training, you fail those who expect greatness in you.")
     print('\n', "You are first taught swordfighting. After many sessions, you are told how you did.",'\n')
-    grade = input("How did you do? Print poor/good/: ")
+    grade = input("How did you do? Print poor/good: ")
     if grade == ("poor"):
         print("You need to try harder!")
         continue
@@ -49,20 +49,38 @@ while answer == ("yes"):
 # This if statement is made to clear out extra indents, and makes sure you are on the good path of the story.
 
 if answer == ("yes") and grade == ("good"):
-    print("Good job! After a few days of swordfighting, your group moves on to archery.",'\n')
-    print("You start off with 4 targets each on top of each other. Put in 4 scores between 0 and 100.",'\n')
-    sum = 0
+  print("Good job! After a few days of swordfighting, your group moves on to archery.",'\n')
+  print("You start off with 4 targets each on top of each other. Put in 4 scores between 0 and 100.",'\n')
+  sum = 0
+  score = 0
+  while sum < 200:
     for i in range(4):
-        score = int(input("Enter a score between 0 and 100: "))
-        if score > 100:
-            print("That score is not achievable. Stay in the range of 0 to 100.",'\n')
-        elif score >= 0 and score < 101:
-            sum = score + sum
-            print("Your total is " + str(sum) + ".")
+      try:
+        score = round(float(input("Enter a score between 0 and 100: ")),2)
+      except ValueError:
+        print("That is not an float. please try again.")
+      if score > 100:
+          print("That score is not achievable. Stay in the range of 0 to 100.",'\n')
+      elif score >= 0 and score < 101:
+          sum = score + sum
+          print("Your total is " + str(sum) + ".",'\n')
+    if sum < 200:
+      print("Keep trying!",'\n')
+      sum = 0
 
-if sum >= 200 or sum <= 400:
-    print("Excellent! You are ready to be classed as a trained soldier!",'\n')
+# This next piece of code makes sure you are continuing the good path of the story. 
 
-print("You are about to be classed after completing your long time of training.",'\n')
-
-
+if sum >= 200 and sum <= 400:
+  print("Excellent! You are ready to be classed as a trained soldier!",'\n')
+  print("You are about to be classed after completing your long time of training.",'\n')
+  print("...",'\n')
+  print("There is a ceremony for your group after graduating training!",'\n')
+  whatNow = input("What do you want to do now? ")
+  def afterCeremony(whatNow):
+    if whatNow == ("fight new foes"):
+      print("You decide to embark on a quest to fight new foes!",'\n')
+      print("And so the cycle continues...",'\n')
+    else:
+      print("You decide to " + whatNow + " after the ceremony.",'\n')
+  afterCeremony(whatNow)
+  print("THE END.")
